@@ -1,0 +1,15 @@
+﻿@model IList<SwimTeamTracker.Models.Event>
+ 
+<h3>All Events</h3>
+<br />
+<table>
+    @foreach (var events in Model) {
+        <tr>
+            <td>@event.Course.Abbr</td>
+            <td>&nbsp;&nbsp;</td>
+            <td>@event.Stroke.Abbr</td>
+            <td>&nbsp;&nbsp;</td>
+            <td>@event.Distance.Length</td>
+        </tr>
+}
+</table>

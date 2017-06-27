@@ -1,0 +1,32 @@
+﻿@model SwimTimeTracker.ViewModels.AddEventViewModel
+
+<h3>Add Event</h3>
+
+<form asp-controller="Event" asp-action="Add" asp-method="post">
+    <div class="form=group">
+        <label asp-for="CourseID"></label>
+        <select asp-for="CourseID" asp-items="Model.Courses"></select>
+        <span asp-validation-for="CourseID"></span>
+     </div>
+    <div class="form=group">
+        <label asp-for="StrokeID"></label>
+        <select asp-for="StrokeID" asp-items="Model.Strokes"></select>
+        <span asp-validation-for="StrokeID"></span>
+    </div>
+    <div class="form=group">
+        <label asp-for="DistanceID"></label>
+        <select asp-for="DistanceID" asp-items="Model.Distances"></select>
+        <span asp-validation-for="DistanceID"></span>
+    </div>
+    <input type="submit" value="Add Event"/>
+</form>
+@*<br />
+<h3>Events</h3>
+<ul>
+    @foreach (var course in Model)
+    {
+        <li>
+            <a asp-controller="Course" asp-action="ViewMenu" asp-route-id="@course.Id">@Course.Name</a>
+        </li>
+            }
+</ul>*@

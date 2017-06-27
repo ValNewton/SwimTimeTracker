@@ -1,0 +1,13 @@
+﻿@model IList<SwimTimeTracker.Models.Stroke>
+
+<br />
+<table>
+    @foreach (var stroke in Model)
+    {
+        <tr>
+            <td>@stroke.Name</td>
+            <td>&nbsp;&nbsp;</td>
+            <td>@stroke.Abbr</td>
+        </tr>
+    }
+</table>

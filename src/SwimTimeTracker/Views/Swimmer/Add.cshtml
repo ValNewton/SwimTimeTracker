@@ -1,0 +1,37 @@
+﻿@model SwimTimeTracker.ViewModels.AddSwimmerViewModel
+
+<h2>New Swimmer</h2>
+
+<form asp-controller="Swimmer" asp-action="Add" method="post">
+
+    <div class="form-group">
+        <label asp-form="FirstName">First Name</label>
+        <input class="form-control" asp-for="FirstName"/>
+        <span asp-validation-for="FirstName"></span>
+    </div>
+    <div class="form-group">
+        <label asp-form="LastName">Last Name</label>
+        <input class="form-control" asp-for="LastName" />
+        <span asp-validation-for="LastName"></span>
+    </div>
+    <div class="form-group">
+        <label asp-form="Gender">Gender</label>
+        <select asp-for="Gender" asp-items="Model.SwimGenders"></select>
+    </div>
+    Date of Birth:
+    <div class="form-group">
+        <label asp-form="BirthYear">Year</label>
+        <select asp-for="BirthYear" asp-items="Model.BirthYears"></select>
+        &nbsp;&nbsp;
+        <label asp-form="BirthMonth">Month</label>
+        <select asp-for="BirthMonth" asp-items="Model.BirthMonths"></select>
+        &nbsp;&nbsp;
+        <label asp-form="BirthDay">Day</label>  
+        <select asp-for="BirthDay" asp-items="Model.BirthDays"></select>
+    </div>
+    
+    <input type="submit" value="Add Swimmer" />
+        
+</form>
+
+<p><a asp-controller="Distance" asp-action="Add">Distance</a></p>

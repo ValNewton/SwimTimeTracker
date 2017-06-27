@@ -1,0 +1,19 @@
+﻿@model SwimTimeTracker.ViewModels.AddCourseViewModel
+
+<h4>Add Pool/Courses Description &amp 3 Letter Abbreviation</h4>
+
+<form asp-controller="Course" asp-action="Add" method="post">
+
+    <div class="form-group">
+        <label asp-form="Abbr">Abbreviation</label>
+        <input class="form-control" asp-for="Abbr" />
+        <span asp-validation-for="Abbr"></span>
+        <label asp-form="Name">Description</label>
+        <input class="form-control" asp-for="Name"/>
+        <span asp-validation-for="Name"></span>
+    </div>
+    
+    <input type="submit" value="Add Course" />
+
+</form>
+<br />

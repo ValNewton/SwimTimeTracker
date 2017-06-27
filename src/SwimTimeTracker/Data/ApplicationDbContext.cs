@@ -5,11 +5,18 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using SwimTimeTracker.Models;
+using SwimTimeTracker.Models.EventModels;
 
 namespace SwimTimeTracker.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Swimmer> Swimmers { get; set; }
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<Stroke> Strokes { get; set; }
+        public DbSet<Distance> Distances { get; set; }
+        public DbSet<Event> Events { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {

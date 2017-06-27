@@ -1,0 +1,34 @@
+﻿@model IList<SwimTimeTracker.Models.Swimmer>
+
+<h1>@ViewBag.title</h1>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>&nbsp;&nbsp;</th>
+        <th>Birth Date</th>
+        <th>&nbsp;&nbsp;</th>
+        <th>Gender</th>
+    </tr>
+
+    @foreach (var swimmer in Model)
+    {
+        <tr>
+            <td>@swimmer.FirstName&nbsp;@swimmer.LastName</td>
+            <td>&nbsp;&nbsp;</td>
+            <td>@swimmer.BirthMonth/@swimmer.BirthDay/@swimmer.BirthYear</td>
+            <td>&nbsp;&nbsp;</td>
+            <td>@swimmer.Gender</td>
+        </tr>
+
+    }
+</table>
+
+@if (Model.Count == 0)
+{
+    <p>No swimmers entered</p>
+}
+<br/>
+<p><a asp-controller="Swimmer"  asp-action ="Add">Add new swimmer</a></p>
+<br/>
+<p>Remove swimmer</p>

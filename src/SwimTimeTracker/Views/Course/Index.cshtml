@@ -1,0 +1,12 @@
+﻿@model IList<SwimTimeTracker.Models.Course>
+
+<br />
+<table>
+@foreach (var course in Model) {
+    <tr>
+        <td>@course.Name</td>
+        <td>&nbsp;&nbsp;</td>
+        <td>@course.Abbr</td>
+    </tr>
+}
+</table>

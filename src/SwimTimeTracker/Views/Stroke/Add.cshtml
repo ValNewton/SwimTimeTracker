@@ -1,0 +1,21 @@
+﻿@model SwimTimeTracker.ViewModels.AddStrokeViewModel
+
+<h4>Add Strokes</h4>
+
+<form asp-controller="Stroke" asp-action="Add" method="post">
+
+    <div class="form-group">
+        <label asp-form="Name">Full Name</label>
+        <input class="form-control" asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+    <div class="form-group">
+        <label asp-form="Abbr">Abbreviation</label>
+        <input class="form-control" asp-for="Abbr" />
+        <span asp-validation-for="Abbr"></span>
+    </div>
+    
+    <input type="submit" value="Add Stroke" />
+
+</form>
+

@@ -1,0 +1,39 @@
+﻿@model SwimTimeTracker.ViewModels.AddCourseViewModel
+
+<h3>Add Course Types (Pool Size):</h3>
+
+<form asp-controller="Course" asp-action="Add" method="post">
+
+    <div class="form-group">
+        <label asp-form="Name">Description</label>
+        <input class="form-control" asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Abbr">Abbreviation</label>
+        <input class="form-control" asp-for="Abbr" />
+        <span asp-validation-for="Abbr"></span>
+    </div>
+
+    <input type="submit" value="Add Course"/>
+
+</form>
+<br />
+<h3>Add Stroke Names:</h3>
+
+<form asp-controller="Stoke" asp-action="Add" method="post">
+
+    <div class="form-group">
+        <label asp-for="Abbr">Short Name</label>
+        <input class="form-control" asp-for="Abbr" />
+        <span asp-validation-for="Abbr"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Name">Full Name</label>
+        <input class="form-control" asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+
+    <input type="submit" value="Add Stroke" />
+
+</form>

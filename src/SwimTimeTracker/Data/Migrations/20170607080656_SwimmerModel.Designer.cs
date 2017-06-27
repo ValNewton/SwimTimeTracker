@@ -8,9 +8,10 @@ using SwimTimeTracker.Data;
 namespace SwimTimeTracker.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170607080656_SwimmerModel")]
+    partial class SwimmerModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")
@@ -172,80 +173,6 @@ namespace SwimTimeTracker.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("SwimTimeTracker.Models.Course", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Abbr");
-
-                    b.Property<int?>("CourseId");
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CourseId");
-
-                    b.ToTable("Courses");
-                });
-
-            modelBuilder.Entity("SwimTimeTracker.Models.Distance", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int?>("DistanceID");
-
-                    b.Property<int>("Length");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("DistanceID");
-
-                    b.ToTable("Distances");
-                });
-
-            modelBuilder.Entity("SwimTimeTracker.Models.EventModels.Event", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("CourseID");
-
-                    b.Property<int>("DistanceID");
-
-                    b.Property<int>("StrokeID");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("CourseID");
-
-                    b.HasIndex("DistanceID");
-
-                    b.HasIndex("StrokeID");
-
-                    b.ToTable("Events");
-                });
-
-            modelBuilder.Entity("SwimTimeTracker.Models.Stroke", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Abbr");
-
-                    b.Property<string>("Name");
-
-                    b.Property<int?>("StrokeId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("StrokeId");
-
-                    b.ToTable("Strokes");
-                });
-
             modelBuilder.Entity("SwimTimeTracker.Models.Swimmer", b =>
                 {
                     b.Property<int>("Id")
@@ -303,45 +230,6 @@ namespace SwimTimeTracker.Data.Migrations
                         .WithMany("Roles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("SwimTimeTracker.Models.Course", b =>
-                {
-                    b.HasOne("SwimTimeTracker.Models.Course")
-                        .WithMany("Courses")
-                        .HasForeignKey("CourseId");
-                });
-
-            modelBuilder.Entity("SwimTimeTracker.Models.Distance", b =>
-                {
-                    b.HasOne("SwimTimeTracker.Models.Distance")
-                        .WithMany("Distances")
-                        .HasForeignKey("DistanceID");
-                });
-
-            modelBuilder.Entity("SwimTimeTracker.Models.EventModels.Event", b =>
-                {
-                    b.HasOne("SwimTimeTracker.Models.Course", "Course")
-                        .WithMany()
-                        .HasForeignKey("CourseID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("SwimTimeTracker.Models.Distance", "Distance")
-                        .WithMany()
-                        .HasForeignKey("DistanceID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("SwimTimeTracker.Models.Stroke", "Stroke")
-                        .WithMany()
-                        .HasForeignKey("StrokeID")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("SwimTimeTracker.Models.Stroke", b =>
-                {
-                    b.HasOne("SwimTimeTracker.Models.Stroke")
-                        .WithMany("Strokes")
-                        .HasForeignKey("StrokeId");
                 });
         }
     }

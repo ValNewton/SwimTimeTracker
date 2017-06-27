@@ -1,0 +1,15 @@
+﻿@model SwimTimeTracker.ViewModels.AddDistanceViewModel
+
+<h4>Add Distance(Length) For All Races &amp Courses</h4>
+
+<form asp-controller="Distance" asp-action="Add" method="post">
+
+    <div class="form-group">
+        <label asp-form="Length">Enter yards or meters</label>
+        <input class="form-control" asp-for="Length"/>
+        <span asp-validation-for="Length"></span>
+    </div>
+
+    <input type="submit" value="Add Distance"/>
+
+</form>
