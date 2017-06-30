@@ -10,15 +10,15 @@ namespace SwimTimeTracker.ViewModels
     {
         [Required]
         [Display(Name = "Course")]
-        public int Course { get; set; }
+        public int CourseID { get; set; }
 
         [Required]
         [Display(Name = "Stroke")]
-        public int Stroke { get; set; }
+        public int StrokeID { get; set; }
 
         [Required]
         [Display(Name = "Distance")]
-        public int Distance { get; set; }
+        public int DistanceID { get; set; }
 
 
         public List<SelectListItem> Courses { get; set; } 

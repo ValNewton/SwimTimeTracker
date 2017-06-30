@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SwimTimeTracker.Data;
-using SwimTimeTracker.Models.EventModels;
 using SwimTimeTracker.ViewModels;
 using SwimTimeTracker.Models;
+using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -24,18 +22,22 @@ namespace SwimTimeTracker.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            IList<Event> events = context.Events.ToList();
+            IList<Event> events = context.Events.Include(
+                e => e.Course).Include(
+                e => e.Stroke).Include(
+                e => e.Distance).
+                ToList();
+            //List<Event> events = context.Events.ToList();
 
-            return View();
+            return View(events);
         }
 
         public IActionResult Add()
-        {
-            //List<Course> courses = context.Courses.ToList();
-            //List<Stroke> strokes = context.Strokes.ToList();
-            //List<Distance> distances = context.Distances.ToList();
-
-            AddEventViewModel addEventViewModel = new AddEventViewModel();
+        {            
+            AddEventViewModel addEventViewModel = new AddEventViewModel(
+                context.Courses.ToList(),
+                context.Strokes.ToList(),
+                context.Distances.ToList());
 
             return View(addEventViewModel);
                         
@@ -47,14 +49,13 @@ namespace SwimTimeTracker.Controllers
         {
             if (ModelState.IsValid)
             {
-                 //var courseID = addEventViewModel.CourseID;
-
+                 
                 Course newCourse =
-                    context.Courses.Single(c => c.ID == addEventViewModel.Course);
+                    context.Courses.Single(c => c.ID == addEventViewModel.CourseID);
                 Stroke newStroke =
-                    context.Strokes.Single(s => s.ID == addEventViewModel.Stroke);
+                    context.Strokes.Single(s => s.ID == addEventViewModel.StrokeID);
                 Distance newDistance =
-                    context.Distances.Single(d => d.ID == addEventViewModel.Distance);
+                    context.Distances.Single(d => d.ID == addEventViewModel.DistanceID);
 
                 Event newEvent = new Event
                 {
