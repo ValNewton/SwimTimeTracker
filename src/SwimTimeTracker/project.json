@@ -46,7 +46,8 @@
       "type": "build"
     },
     "Microsoft.AspNetCore.Mvc.Core": "1.0.1",
-    "Microsoft.EntityFrameworkCore": "1.0.1"
+    "Microsoft.EntityFrameworkCore": "1.0.1",
+    "jQuery.UI.Combined": "1.12.1"
   },
 
   "tools": {

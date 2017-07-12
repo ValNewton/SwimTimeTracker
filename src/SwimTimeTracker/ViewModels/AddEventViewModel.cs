@@ -20,15 +20,15 @@ namespace SwimTimeTracker.ViewModels
         [Display(Name = "Distance")]
         public int DistanceID { get; set; }
 
-
         public List<SelectListItem> Courses { get; set; } 
         public List<SelectListItem> Strokes { get; set; } 
         public List<SelectListItem> Distances { get; set; }
-
         
         public AddEventViewModel() { }
 
-        public AddEventViewModel(IEnumerable<Course> courses, IEnumerable<Stroke> strokes, IEnumerable<Distance> distances)
+        public AddEventViewModel(IEnumerable<Course> courses, 
+                IEnumerable<Stroke> strokes, 
+                IEnumerable<Distance> distances)
         
         {
             Courses = new List<SelectListItem>();

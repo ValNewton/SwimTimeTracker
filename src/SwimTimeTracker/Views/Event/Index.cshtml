@@ -1,8 +1,10 @@
-﻿@model IEnumerable<SwimTimeTracker.Models.Event>
+﻿@model IList<SwimTimeTracker.Models.Event>
  
+<h1>@ViewBag.title</h1>
+
 <h3>All Events</h3>
 <br />
-<table class="table">
+<table>
 
     @foreach (var event_ in  Model)
     {

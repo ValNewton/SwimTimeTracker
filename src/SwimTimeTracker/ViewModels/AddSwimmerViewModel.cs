@@ -40,10 +40,8 @@ namespace SwimTimeTracker.ViewModels
 
         public AddSwimmerViewModel()
         {
-
             SwimGenders = new List<SelectListItem>();
-
-
+            
             SwimGenders.Add(new SelectListItem
             {
                 Value = ((int)SwimGender.Male).ToString(),

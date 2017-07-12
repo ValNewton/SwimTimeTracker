@@ -17,7 +17,6 @@ namespace SwimTimeTracker.Models
 
         public DateTime DateTime { get; set;}
 
-        public TimeSpan RaceTime { get; set; }
-        
+        public TimeSpan RaceTime { get; set; }    
     }
 }

@@ -11,6 +11,7 @@ namespace SwimTimeTracker.Data
         public DbSet<Stroke> Strokes { get; set; }
         public DbSet<Distance> Distances { get; set; }
         public DbSet<Event> Events { get; set; }
+        public DbSet<Race> Races { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)

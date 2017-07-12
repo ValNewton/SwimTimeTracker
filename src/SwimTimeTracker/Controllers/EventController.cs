@@ -27,7 +27,7 @@ namespace SwimTimeTracker.Controllers
                 e => e.Stroke).Include(
                 e => e.Distance).
                 ToList();
-            //List<Event> events = context.Events.ToList();
+            //IList<Event> events = context.Events.ToList();
 
             return View(events);
         }

@@ -1,0 +1,72 @@
+﻿@model SwimTimeTracker.ViewModels.AddRaceViewModel
+
+@*<link href="~/content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+    <script src="~/scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/scripts/jquery-ui-1.12.1.min.js"></script>
+
+@html.editorfor(model => model.datetime,
+    new {htmlattributes = new { @class ="form-control date-picker"}})*@
+
+<form asp-controller="Race" asp-action="Add" asp-method="post">
+    
+    
+    <!--in Cheese MVC example was value="Model.Swimmer.ID" but that throws an error in this file -->
+   
+    @*@Html.EditorFor(model => model.DateTime, new { htmlAttributes = new { @class = "form-control date-picker"}})
+    
+    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+        <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+        <script type="text/javascript">
+            $(funtion () {
+                $(".date-picker").datepicker({
+            dateFormat:'mm-dd-yyyy'
+            });
+                        
+            });
+        </script>*@
+
+    <input type="hidden" name="SwimmerID" value="@Model.Swimmer" />
+
+    <div class="form-group">
+        <label asp-for="year">Years:</label>
+        <input class="form-control" asp-for="year" />
+        <span asp-validation-for="year"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="mth">Month:</label>
+        <input class="form-control" asp-for="mth" />
+        <span asp-validation-for="mth"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="day">Day:</label>
+        <input class="form-control" asp-for="day" />
+        <span asp-validation-for="day"></span>
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="EventID"></label>
+        <select asp-for="EventID" asp-items="Model.Events"></select>
+        <span asp-validation-for="EventID"></span>
+    </div>
+
+    <br/>
+
+    <div class="form-group">
+        <label asp-for="min">Minutes:</label>
+        <input class="form-control" asp-for="min" />
+        <span asp-validation-for="min"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="sec">Seconds:</label>
+        <input class="form-control" asp-for="sec" />
+        <span asp-validation-for="sec"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="hund">Hundredths:</label>
+        <input class="form-control" asp-for="hund" />
+        <span asp-validation-for="hund"></span>
+    </div>
+
+    <input type="submit" value="Add Race" />
+
+</form>
