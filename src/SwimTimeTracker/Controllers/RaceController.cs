@@ -1,4 +1,4 @@
-﻿using System;
+﻿  using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -62,8 +62,8 @@ namespace SwimTimeTracker.Controllers
             {
                 Swimmer thisSwimmer =
                     context.Swimmers.Single(s => s.Id == addRaceViewModel.SwimmerID);
-                Event thisEvent =
-                    context.Events.Single(e => e.ID == addRaceViewModel.EventID);
+                //Event thisEvent =
+                  //  context.Events.Single(e => e.ID == addRaceViewModel.EventID);
 
                 int hh = addRaceViewModel.hund;
                 
@@ -78,6 +78,7 @@ namespace SwimTimeTracker.Controllers
                 int day = addRaceViewModel.day;
 
                 DateTime thisDate = new DateTime(year, mth, day);
+
 
                 Race newRace = new Race
                 {
