@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
     @Html.ApplicationInsightsJavaScript(TelemetryConfiguration)
+
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -31,7 +32,9 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li><a asp-area="" asp-controller="Swimmer" asp-action="Index">Swimmers</a></li>
+                    <!--ToDo: create link to view/download pdf of motivatinal times-->
+                    <li><a href="~/images/2020motivationaltimes-top16.pdf">Motivational Times</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                 </ul>

@@ -6,7 +6,7 @@ using SwimTimeTracker.ViewModels;
 using SwimTimeTracker.Models;
 using Microsoft.EntityFrameworkCore;
 
-// For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+
 
 namespace SwimTimeTracker.Controllers
 {
@@ -40,7 +40,6 @@ namespace SwimTimeTracker.Controllers
                 context.Distances.ToList());
 
             return View(addEventViewModel);
-                        
         }
 
 
@@ -49,7 +48,6 @@ namespace SwimTimeTracker.Controllers
         {
             if (ModelState.IsValid)
             {
-                 
                 Course newCourse =
                     context.Courses.Single(c => c.ID == addEventViewModel.CourseID);
                 Stroke newStroke =

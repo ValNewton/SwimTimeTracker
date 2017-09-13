@@ -2,22 +2,23 @@
 
 <h1>@ViewBag.title</h1>
 
-<table>
+<table class="table-swim">
     <tr>
         <th>Name</th>
-        <th>&nbsp;&nbsp;</th>
+       
         <th>Birth Date</th>
-        <th>&nbsp;&nbsp;</th>
+        
         <th>Gender</th>
     </tr>
+
 
     @foreach (var swimmer in Model)
     {
         <tr>
-            <td>@swimmer.FirstName&nbsp;@swimmer.LastName</td>
-            <td>&nbsp;&nbsp;</td>
+            <td><a asp-controller="Race" asp-action="Individual">@swimmer.FirstName&nbsp;@swimmer.LastName</a></td>
+            
             <td>@swimmer.BirthMonth/@swimmer.BirthDay/@swimmer.BirthYear</td>
-            <td>&nbsp;&nbsp;</td>
+            
             <td>@swimmer.Gender</td>
         </tr>
 

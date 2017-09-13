@@ -1,4 +1,4 @@
-﻿  using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,9 +7,9 @@ using SwimTimeTracker.Data;
 using SwimTimeTracker.Models;
 using SwimTimeTracker.ViewModels;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.Logging;
 
-
-// For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace SwimTimeTracker.Controllers
 {
@@ -21,10 +21,13 @@ namespace SwimTimeTracker.Controllers
         {
             context = DbContext;
         }
+
+        public int EventID { get; set; }
         
-                // GET: /<controller>/
+        // GET: /<controller>/
         public IActionResult Index()
         {
+            //??not sure if this works yet.//
             IList<Race> races = context.Races.Include(
                 r => r.Swimmer).Include(
                 r => r.Event).
@@ -37,23 +40,18 @@ namespace SwimTimeTracker.Controllers
         {
             Swimmer swimmer = context.Swimmers.Single(s => s.Id == id);
 
-            List<Event> events = context.Events.ToList();
+            List<Course> courses = context.Courses.ToList();
+            List<Stroke> strokes = context.Strokes.ToList();
+            List<Distance> distances = context.Distances.ToList();
+
+            //Event not currently included.  Cascading Select list not working.
+            //Events to be displayed with distance property(event.distanceID.Length)
 
             //AddRaceViewModel addRaceViewModel = new AddRaceViewModel(swimmer,
-               // context.Events.ToList());
-               
-            return View(new AddRaceViewModel(swimmer, events));
+            // context.Events.ToList());
 
-            //AddRaceViewModel addRaceViewModel = new AddRaceViewModel(
-            //    int id,
-            //    context.Events.ToList());
-
-            //AddRaceViewModel addRaceViewModel = new AddRaceViewModel(
-            //    context.Swimmers.ToList(),
-            //    context.Events.ToList());
-                         
+            return View(new AddRaceViewModel(swimmer,courses,strokes,distances));
         }
-
 
         [HttpPost]
         public IActionResult Add(AddRaceViewModel addRaceViewModel)
@@ -62,8 +60,18 @@ namespace SwimTimeTracker.Controllers
             {
                 Swimmer thisSwimmer =
                     context.Swimmers.Single(s => s.Id == addRaceViewModel.SwimmerID);
+                
+                Course thisCourse =
+                    context.Courses.Single(c => c.ID == addRaceViewModel.CourseID);
+
+               Stroke thisStroke =
+                    context.Strokes.Single(s => s.ID == addRaceViewModel.StrokeID);
+
+                Distance thisDistance =
+                    context.Distances.Single(d => d.ID == addRaceViewModel.DistanceID);
+
                 //Event thisEvent =
-                  //  context.Events.Single(e => e.ID == addRaceViewModel.EventID);
+                //    context.Events.Single(e => e.ID == addRaceViewModel.EventID);
 
                 int hh = addRaceViewModel.hund;
                 
@@ -83,7 +91,7 @@ namespace SwimTimeTracker.Controllers
                 Race newRace = new Race
                 {
                     Swimmer = thisSwimmer,
-                    Event = thisEvent,
+                    //Event = thisEvent,
                     RaceTime = thisTime,
                     DateTime = thisDate
                 };
@@ -95,7 +103,31 @@ namespace SwimTimeTracker.Controllers
             }
 
             return View(addRaceViewModel);
-
         }
+        
+        //Json method does not work.  Json() does not exist in this context. // 
+        //Also tried this code in ViewModel. //
+
+        //public JsonResult GetDistance(int CourseId, int StrokeId, List<Event> events)
+        //{
+        //    foreach (var e in events)
+        //    {
+        //        if (e.CourseID == CourseId && e.StrokeID == StrokeId)
+        //        {
+        //            string listText = Event.DistanceID.ToString();
+
+        //            Events.Add(new SelectListItem
+        //            {
+        //                Value = ((int)EventID).ToString(),
+        //                Text = listText
+        //            });
+        //        }
+        //        else
+        //        { }
+        //    }
+        //    return Json(new SelectList(EventId, "EventED", "listText"));
+        //}
+
     }
 }
+

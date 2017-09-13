@@ -37,7 +37,9 @@ namespace SwimTimeTracker.Controllers
             _logger = loggerFactory.CreateLogger<AccountController>();
         }
 
-        //
+        //ToDo: Tie user id to swimmer data access
+        //ToDo: Redirect to Users Swimmer index page after succesful login
+
         // GET: /Account/Login
         [HttpGet]
         [AllowAnonymous]
@@ -63,7 +65,7 @@ namespace SwimTimeTracker.Controllers
                 if (result.Succeeded)
                 {
                     _logger.LogInformation(1, "User logged in.");
-                    return RedirectToLocal(returnUrl);
+                    return RedirectToLocal(returnUrl);                    
                 }
                 if (result.RequiresTwoFactor)
                 {
